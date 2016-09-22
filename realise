@@ -1,0 +1,48 @@
+#include <cmath>
+#include <iostream>
+
+struct Node
+{
+    int x;
+    int y;
+    Node *next,*prev;
+};
+
+
+struct List
+{
+    Node *head=NULL;
+    Node *tail=NULL;
+};
+
+
+void add_list( List *list, int x, int y )
+{
+    Node *temp = new Node();
+    temp->next = NULL;
+    temp->x = x;
+    temp->y = y;
+
+    if ( list->head != NULL )
+    {
+        temp->prev = list->tail;
+        list->tail->next = temp;
+        list->tail = temp;
+    }
+    else
+    {
+        temp->prev = NULL;
+        list->head = list->tail = temp;
+    }
+}
+
+void print( List * list )
+{
+    Node * temp = list->head;
+    while( temp != NULL )
+    {
+        std::cout << temp->x <<" "<<temp->y<<" "<< std::endl;
+        temp = temp->next;
+    }
+
+}
