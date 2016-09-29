@@ -13,12 +13,13 @@ struct List
 {
     Node *head=NULL;
     Node *tail=NULL;
+    int n=0;
 };
 
 
 void add_list( List *list, int x, int y )
 {
-    Node *temp = new Node();
+    Node *temp = new Node;
     temp->next = NULL;
     temp->x = x;
     temp->y = y;
@@ -46,3 +47,55 @@ void print( List * list )
     }
 
 }
+void find_first(List * list,int a,int b)
+{
+    Node * temp = list->head;
+    int i=1;
+    while (temp!=NULL)
+    {
+        int x = temp->x;
+        int y = temp->y;
+        if ((x==a) and(y==b))
+        {
+            cout<<i;
+            break;
+        }
+        temp = temp->next;
+        i++;
+    }
+
+}
+void find_last(List * list,int a,int b)
+{
+    Node * temp = list->tail;
+    int i=list->n;
+    while (temp!=NULL)
+    {
+        int x = temp->x;
+        int y = temp->y;
+        if ((x==a) and(y==b))
+        {
+            cout<<i;
+            break;
+        }
+        temp = temp->prev;
+        i--;
+    }
+
+}
+void add_element(List * list,int a,int b, int k)
+{
+    Node * temp = list->head;
+    for(int i=1;i<k-1;i++)
+        temp = temp->next;
+    Node * temp1= temp->next;
+    Node * new_node=new Node;
+    new_node->x=a;
+    new_node->y=b;
+    new_node->next=temp1;
+    new_node->prev=temp;
+    temp->next=new_node;
+    temp1->prev=new_node;
+    list->n++;
+}
+
