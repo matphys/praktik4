@@ -11,5 +11,13 @@ int main()
        int b=rand()/10000000;
         add_List(&j,a,b);
     }
-   
+    int a,b;
+    int k=10;
+    cout<<"add ";
+    cin>>a>>b;
+    add_element(&j,a,b,k);
+    find_first(&j,a,b);
+    find_last(&j,a,b);
+    print(&j);
+    return 0;
 }
